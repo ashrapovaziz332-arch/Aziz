@@ -6,7 +6,7 @@
   "format": { "width": 1080, "height": 1920, "fps": 30, "targetDurationSec": 30 },
   "createdAt": "2026-10-19",
   "stages": {
-    "creative":      { "agent": "creative-director",   "status": "todo", "notes": "01-creative/script.json — koordinator yozgan boshlang'ich qoralama (seed). Creative Director uni qayta ishlashi kerak." },
+    "creative":      { "agent": "creative-director",   "status": "review", "notes": "v1 final: hook «Jannat bogʻi qanday chiziladi?», 6 sahna / 30 s, concept.md + script.json + caption.md tayyor; music.source/license Video Editor uchun boʻsh." },
     "landscape":     { "agent": "landscape-architect", "status": "todo", "notes": "" },
     "visualization": { "agent": "3d-visualizer",       "status": "todo", "notes": "" },
     "motion":        { "agent": "motion-designer",     "status": "todo", "notes": "Remotion'da texnik test kompozitsiyasi (P001-Teaser) tayyor; yakuniy versiya emas." },

@@ -1,16 +1,12 @@
 # QC hisobot — №001
 
 <!-- AUTO:START — bu bo'lim scripts/qc.mjs tomonidan qayta yoziladi -->
-Avtomatik tekshiruv: 2026-10-19T13:56:48.639Z · ✅ 4 · ⚠️ 5 · ❌ 11
+Avtomatik tekshiruv: 2026-10-19T14:07:16.344Z · ✅ 6 · ⚠️ 1 · ❌ 9
 
 ## 01-creative (creative-director)
-- ❌ 01-creative/concept.md YO'Q
+- ✅ 01-creative/concept.md mavjud
 - ✅ 01-creative/script.json mavjud
-- ❌ 01-creative/caption.md YO'Q
-- ⚠️ script.json holati "seed" — Creative Director yakunlamagan
-- ⚠️ s01: imlo — "o'"/"g'" o'rniga "oʻ"/"gʻ" (U+02BB) ishlating: "Jannat bog'i qanday chiziladi?"
-- ⚠️ s02: imlo — "o'"/"g'" o'rniga "oʻ"/"gʻ" (U+02BB) ishlating: "Chorbog' — 4 qismli bog'"
-- ⚠️ s06: imlo — "o'"/"g'" o'rniga "oʻ"/"gʻ" (U+02BB) ishlating: "Saqlab qo'ying — hovlingiz uchun g'oya"
+- ✅ 01-creative/caption.md mavjud
 - ✅ Sahna vaqtlari uzluksiz, jami 30 s
 
 ## 02-landscape (landscape-architect)

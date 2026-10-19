@@ -1,36 +1,83 @@
 {
   "projectId": "001",
   "title": "Islomiy landshaft",
-  "version": 0,
-  "status": "seed",
+  "version": 1,
+  "status": "final",
   "durationSec": 30,
-  "hook": "Jannat bog'i qanday chiziladi?",
-  "music": { "mood": "ambient, sokin, oud/ney ohanglari", "bpm": 70, "source": "", "license": "" },
+  "hook": "Jannat bogʻi qanday chiziladi?",
+  "music": {
+    "mood": "ambient, sokin, meditativ; oud va ney ohanglari, yumshoq pad, suv shovqini bilan uygʻun; s05 da biroz koʻtarilish, s06 da tinch yakun",
+    "bpm": 70,
+    "source": "",
+    "license": ""
+  },
   "scenes": [
-    { "id": "s01", "startSec": 0,  "durationSec": 3, "purpose": "hook",
-      "onScreenText": "Jannat bog'i qanday chiziladi?", "voiceover": "",
-      "shot": "drone top-down, sekin zoom-out", "landscapeNeeds": "markaziy favvora yuqoridan",
-      "transitionOut": "pattern-reveal" },
-    { "id": "s02", "startSec": 3,  "durationSec": 5, "purpose": "concept",
-      "onScreenText": "Chorbog' — 4 qismli bog'", "voiceover": "",
-      "shot": "top-down reja animatsiyasi", "landscapeNeeds": "kesishgan 2 ta suv kanali, 4 parter",
-      "transitionOut": "wipe" },
-    { "id": "s03", "startSec": 8,  "durationSec": 6, "purpose": "detail",
-      "onScreenText": "Markazda — suv", "voiceover": "",
-      "shot": "eye-level dolly-in favvoraga", "landscapeNeeds": "sakkiz qirrali favvora havzasi",
-      "transitionOut": "cut" },
-    { "id": "s04", "startSec": 14, "durationSec": 6, "purpose": "detail",
-      "onScreenText": "Naqsh — cheksizlik ramzi", "voiceover": "",
-      "shot": "macro, plitka girih naqshi", "landscapeNeeds": "zellij plitka yo'lak",
-      "transitionOut": "zoom" },
-    { "id": "s05", "startSec": 20, "durationSec": 6, "purpose": "emotion",
-      "onScreenText": "Soya. Suv. Sukunat.", "voiceover": "",
-      "shot": "ravoq orqali crane-up, golden hour", "landscapeNeeds": "ravoq, sarv qatori, anor daraxtlari",
-      "transitionOut": "fade" },
-    { "id": "s06", "startSec": 26, "durationSec": 4, "purpose": "cta",
-      "onScreenText": "Saqlab qo'ying — hovlingiz uchun g'oya", "voiceover": "",
-      "shot": "tungi umumiy plan, chiroqlar", "landscapeNeeds": "yoritilgan kanallar",
-      "transitionOut": "end" }
+    {
+      "id": "s01",
+      "startSec": 0,
+      "durationSec": 3,
+      "purpose": "hook",
+      "onScreenText": "Jannat bogʻi qanday chiziladi?",
+      "voiceover": "",
+      "shot": "motion-graphics: emerald (#0F3D2E) fonda oltin (#C9A45C) 8 qirrali yulduzli girih naqshi chiziq-chiziq chiziladi (0–1.5 s), soʻng sekin zoom-out 1.0→1.15; matn 0.3 s da paydo boʻladi, kadr harakati 1.5 s da oʻzgaradi",
+      "landscapeNeeds": "Girih naqshi moduli: 8 qirrali yulduz, 60×60 sm zellij plitka moduli (s04 dagi yoʻlak plitkasi bilan bir xil naqsh); markaziy favvoraning sakkiz qirrali shakli (r = 2 m) bilan geometrik moslik",
+      "transitionOut": "pattern-reveal"
+    },
+    {
+      "id": "s02",
+      "startSec": 3,
+      "durationSec": 5,
+      "purpose": "concept",
+      "onScreenText": "Toʻrt qism, ikki suv kanali",
+      "voiceover": "",
+      "shot": "drone top-down (90°), ortografik reja animatsiyasi: avval 20×20 m perimetr, soʻng 2 ta kesishgan kanal (3.5 s), keyin 4 parter yashil bilan toʻladi (5 s); qum (#F3EBDD) fon, turkuaz (#2F8F8B) suv",
+      "landscapeNeeds": "Uchastka ~20×20 m; perimetr yoʻlagi ~1.5 m; 2 ta oʻq boʻylab kesishgan suv kanali, har biri eni 1 m (chuqurligi ~0.3 m), ikki yonida ≥ 1.2 m yoʻlak; 4 ta teng parter (taxminan 6.8×6.8 m); markazda sakkiz qirrali favvora havzasi r = 2 m; perimetr boʻylab sarv qatori belgisi; janubiy oʻqda ravoq oʻrni. Aniq oʻlchamlarni Landscape Architect tasdiqlaydi",
+      "transitionOut": "wipe"
+    },
+    {
+      "id": "s03",
+      "startSec": 8,
+      "durationSec": 5,
+      "purpose": "detail",
+      "onScreenText": "Markazda — suv, hayot manbai",
+      "voiceover": "",
+      "shot": "top-down favvora ustidan, sekin aylanish (≈10°) va zoom-in 1.0→1.2; suv yuzasida konsentrik toʻlqinlar, 2.5 s da toʻlqin kanallarga yoyiladi",
+      "landscapeNeeds": "Sakkiz qirrali favvora havzasi r = 2 m (tashqi aylana radiusi), chekkasi oq travertin, havza tubi turkuaz zellij; markazda past fontan (balandligi ~0.4 m); havzadan 4 yoʻnalishda 1 m li kanallar chiqadi",
+      "transitionOut": "cut"
+    },
+    {
+      "id": "s04",
+      "startSec": 13,
+      "durationSec": 5,
+      "purpose": "detail",
+      "onScreenText": "Naqsh — cheksiz tartib ramzi",
+      "voiceover": "",
+      "shot": "macro, plitka ustidan past burchak (≈30°), sekin dolly + zoom 1.0→1.3, −10° aylanish; 2.5 s da yorugʻ-soya chizigʻi naqsh ustidan oʻtadi",
+      "landscapeNeeds": "Kanal yonidagi yoʻlak (eni ≥ 1.2 m): zellij plitka, girih 8 qirrali yulduz naqshi, 60×60 sm modul; ranglar — emerald, turkuaz, qum, oltin chok; yon tomonida lavanda chegarasi (Lavandula angustifolia, balandligi 40–60 sm)",
+      "transitionOut": "zoom"
+    },
+    {
+      "id": "s05",
+      "startSec": 18,
+      "durationSec": 7,
+      "purpose": "emotion",
+      "onScreenText": "Soya. Suv. Sukunat.",
+      "voiceover": "",
+      "shot": "eye-level (1.6 m), ravoq ichidan bogʻ tomon dolly-in, 3.5 s da crane-up 1.6→4 m; golden hour, past quyosh orqadan, uzun sarv soyalari kanal ustida; har soʻz alohida chiqadi (≈1.2 s oraliq)",
+      "landscapeNeeds": "Janubiy oʻqdagi ravoq (ochiq qismi ~2.4 m eni, ~3.6 m balandligi, ganch/gʻisht); ravoq orqasida kanal oʻqi va favvora koʻrinadi; perimetr boʻylab sarv qatori (Cupressus sempervirens, oraligʻi ~2.5 m, balandligi 4–6 m); parterlarda anor daraxtlari (Punica granatum, har parterda 1 ta, balandligi ~2.5 m); parter chetlarida atirgul (Rosa damascena) va lavanda",
+      "transitionOut": "fade"
+    },
+    {
+      "id": "s06",
+      "startSec": 25,
+      "durationSec": 5,
+      "purpose": "cta",
+      "onScreenText": "Saqlang — hovlingiz uchun gʻoya",
+      "voiceover": "",
+      "shot": "tungi top-down umumiy plan (s02 reja kompozitsiyasi takrori), chiroqlar ketma-ket yonadi: kanallar → favvora → sarv yoritkichlari; oxirgi 1 s da @aziz_floran handle",
+      "landscapeNeeds": "Tungi yoritish: kanal chetlarida suv ostidan LED chiziq (iliq oq, ~2700 K), favvora ichki yoritgichi, sarv tagida yuqoriga qaragan spot chiroqlar, yoʻlaklarda past bollard chiroqlar; reja oʻlchamlari s02 bilan bir xil",
+      "transitionOut": "end"
+    }
   ],
-  "cta": "Saqlab qo'ying va do'stingizga yuboring"
+  "cta": "Saqlab qoʻying va doʻstingizga yuboring"
 }
