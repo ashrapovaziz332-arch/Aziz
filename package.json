@@ -1,0 +1,26 @@
+{
+  "name": "aziz-floran-ai-studio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio remotion/src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "render:001": "remotion render remotion/src/index.ts P001-Teaser projects/001-islomiy-landshaft/04-motion/renders/P001-Teaser.mp4",
+    "still:001": "remotion still remotion/src/index.ts P001-Teaser projects/001-islomiy-landshaft/04-motion/renders/P001-Teaser-frame.png --frame=120",
+    "new-project": "node scripts/new-project.mjs",
+    "status": "node scripts/status.mjs",
+    "qc": "node scripts/qc.mjs"
+  },
+  "dependencies": {
+    "@fontsource/montserrat": "5.1.0",
+    "@fontsource/playfair-display": "5.1.0",
+    "@remotion/cli": "4.0.536",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.536"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.12",
+    "typescript": "5.6.3"
+  }
+}

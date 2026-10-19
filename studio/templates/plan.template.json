@@ -1,0 +1,12 @@
+{
+  "projectId": "000",
+  "units": "m",
+  "site": { "width": 0, "length": 0, "orientation": "shimol tepada", "climate": "Toshkent, USDA 7a" },
+  "zones": [
+    { "id": "z1", "name": "", "type": "lawn|paving|water|planting|structure|path", "x": 0, "y": 0, "w": 0, "h": 0, "material": "" }
+  ],
+  "elements": [
+    { "id": "e1", "name": "", "type": "fountain|arch|pergola|bench|light|tree", "x": 0, "y": 0, "sizeM": 0 }
+  ],
+  "plantsFile": "plants.csv"
+}

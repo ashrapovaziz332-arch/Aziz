@@ -1,0 +1,16 @@
+{
+  "id": "001",
+  "slug": "001-islomiy-landshaft",
+  "title": "Islomiy landshaft",
+  "channel": "@aziz_floran",
+  "format": { "width": 1080, "height": 1920, "fps": 30, "targetDurationSec": 30 },
+  "createdAt": "2026-10-19",
+  "stages": {
+    "creative":      { "agent": "creative-director",   "status": "todo", "notes": "01-creative/script.json — koordinator yozgan boshlang'ich qoralama (seed). Creative Director uni qayta ishlashi kerak." },
+    "landscape":     { "agent": "landscape-architect", "status": "todo", "notes": "" },
+    "visualization": { "agent": "3d-visualizer",       "status": "todo", "notes": "" },
+    "motion":        { "agent": "motion-designer",     "status": "todo", "notes": "Remotion'da texnik test kompozitsiyasi (P001-Teaser) tayyor; yakuniy versiya emas." },
+    "edit":          { "agent": "video-editor",        "status": "todo", "notes": "" },
+    "qc":            { "agent": "quality-controller",  "status": "todo", "notes": "" }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "projectId": "000",
+  "scenes": [
+    {
+      "sceneId": "s01",
+      "camera": { "type": "drone", "heightM": 0, "focalMm": 24, "move": "dolly-in", "durationSec": 3 },
+      "lighting": { "time": "golden hour", "sunAngleDeg": 15, "hdri": "" },
+      "materials": [{ "name": "", "color": "#000000", "roughness": 0.5 }],
+      "prompt": "",
+      "negativePrompt": "people, animals, text, watermark, distorted geometry",
+      "renderStatus": "pending",
+      "renderFile": ""
+    }
+  ]
+}

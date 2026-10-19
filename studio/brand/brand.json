@@ -1,0 +1,18 @@
+{
+  "name": "Aziz Floran",
+  "handle": "@aziz_floran",
+  "colors": {
+    "emerald": "#0F3D2E",
+    "emeraldLight": "#1E5C47",
+    "gold": "#C9A45C",
+    "sand": "#F3EBDD",
+    "turquoise": "#2F8F8B",
+    "ink": "#0B1410"
+  },
+  "fonts": {
+    "display": "Playfair Display",
+    "body": "Montserrat"
+  },
+  "safeZone": { "topPx": 250, "bottomPx": 420, "sidePx": 80 },
+  "tone": "premium, sokin, tabiatga hurmat, aniq va ishonchli"
+}

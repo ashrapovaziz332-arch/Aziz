@@ -1,0 +1,8 @@
+node_modules/
+out/
+.DS_Store
+# Katta video fayllar gitga kirmaydi (kadr-PNG preview saqlanadi)
+projects/*/04-motion/renders/*.mp4
+projects/*/05-edit/exports/*.mp4
+projects/*/assets/**/*.mp4
+projects/*/assets/**/*.wav

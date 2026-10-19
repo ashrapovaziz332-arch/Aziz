@@ -1,0 +1,38 @@
+{
+  "studio": "AZIZ FLORAN AI STUDIO",
+  "channel": "@aziz_floran",
+  "format": { "width": 1080, "height": 1920, "fps": 30, "maxDurationSec": 90 },
+  "stages": [
+    {
+      "key": "creative", "folder": "01-creative", "agent": "creative-director",
+      "dependsOn": [],
+      "requiredOutputs": ["concept.md", "script.json", "caption.md"]
+    },
+    {
+      "key": "landscape", "folder": "02-landscape", "agent": "landscape-architect",
+      "dependsOn": ["creative"],
+      "requiredOutputs": ["plan.json", "plants.csv", "plan.svg", "notes.md"]
+    },
+    {
+      "key": "visualization", "folder": "03-3d", "agent": "3d-visualizer",
+      "dependsOn": ["landscape"],
+      "requiredOutputs": ["scenes.json", "prompts.md"]
+    },
+    {
+      "key": "motion", "folder": "04-motion", "agent": "motion-designer",
+      "dependsOn": ["creative", "landscape", "visualization"],
+      "requiredOutputs": ["motion-notes.md", "renders/*.mp4"]
+    },
+    {
+      "key": "edit", "folder": "05-edit", "agent": "video-editor",
+      "dependsOn": ["motion"],
+      "requiredOutputs": ["edit-decision-list.md", "exports/*_final.mp4"]
+    },
+    {
+      "key": "qc", "folder": "06-qc", "agent": "quality-controller",
+      "dependsOn": ["edit"],
+      "requiredOutputs": ["qc-report.md"]
+    }
+  ],
+  "statuses": ["todo", "in_progress", "review", "changes_requested", "done"]
+}

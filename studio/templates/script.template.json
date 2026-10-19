@@ -1,0 +1,23 @@
+{
+  "projectId": "000",
+  "title": "Loyiha nomi",
+  "version": 1,
+  "status": "draft",
+  "durationSec": 30,
+  "hook": "Birinchi 1–3 soniyadagi matn",
+  "music": { "mood": "", "bpm": 0, "source": "", "license": "" },
+  "scenes": [
+    {
+      "id": "s01",
+      "startSec": 0,
+      "durationSec": 3,
+      "purpose": "hook",
+      "onScreenText": "",
+      "voiceover": "",
+      "shot": "drone top-down / eye-level / macro ...",
+      "landscapeNeeds": "Bu sahnada ko'rinishi kerak bo'lgan landshaft elementlari",
+      "transitionOut": "cut / wipe / zoom / pattern-reveal"
+    }
+  ],
+  "cta": "Saqlab qo'ying va do'stingizga yuboring"
+}
