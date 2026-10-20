@@ -939,7 +939,31 @@ function render(T) {
 // ---------- ishga tushirish ----------
 const fontsReady = Promise.all(['700 40px PF', '400 40px PF', '500 40px MS', '600 40px MS', '700 40px MS', '800 40px MS'].map(f => document.fonts.load(f, 'AZ‘o')));
 const ready = fontsReady.then(() => { prerender(); render(0); });
-window.REEL = { DUR, render, ready };
+// ---------- Reels muqovasi (1080×1920; asosiy qismi profildagi 4:5 kesimga — y 285–1635 ga sig'adi) ----------
+function cover() {
+  X = main; X.setTransform(1, 0, 0, 1, 0, 0); X.globalAlpha = 1;
+  X.fillStyle = C.cream; X.fillRect(0, 0, W, H);
+  X.globalAlpha = .55; X.strokeStyle = '#E3D8C4'; X.lineWidth = 1; X.beginPath(); for (let x = 0; x <= W; x += 54) { X.moveTo(x, 0); X.lineTo(x, H); } for (let y = 0; y <= H; y += 54) { X.moveTo(0, y); X.lineTo(W, y); } X.stroke(); X.globalAlpha = 1;
+  logo(352, 1, 1.15);
+  txt('Bitta hovli —', 540, 482, '700 100px PF', C.ink, 'center');
+  X.font = '700 116px PF'; const w1 = X.measureText('12').width, w2 = X.measureText(' xil ko‘rinish').width, x0 = 540 - (w1 + w2) / 2;
+  txt('12', x0, 604, '700 116px PF', C.gold, 'left'); txt(' xil ko‘rinish', x0 + w1, 604, '700 116px PF', C.ink, 'left');
+  txt('LANDSHAFTNING MASHHUR USLUBLARI', 540, 670, '700 30px MS', C.gold, 'center', 5);
+  const cw = 226, ch = 174, g = 14, gx = (W - (4 * cw + 3 * g)) / 2, gy = 712;
+  for (let k = 0; k < 12; k++) {
+    const r = { x: gx + (k % 4) * (cw + g), y: gy + Math.floor(k / 4) * (ch + g), w: cw, h: ch };
+    X.save(); X.shadowColor = 'rgba(31,61,43,.2)'; X.shadowBlur = 14; X.shadowOffsetY = 5; X.fillStyle = C.white; rrect(r.x - 4, r.y - 4, r.w + 8, r.h + 8, 16); X.fill(); X.restore();
+    X.save(); rrect(r.x, r.y, r.w, r.h, 12); X.clip(); X.drawImage(thumbs[k], r.x, r.y, r.w, r.h); X.restore();
+    X.fillStyle = C.gold; X.beginPath(); X.arc(r.x + 24, r.y + 24, 19, 0, 6.3); X.fill(); X.strokeStyle = C.white; X.lineWidth = 2.5; X.stroke();
+    txt(String(k + 1), r.x + 24, r.y + 32, '800 21px MS', C.white, 'center');
+  }
+  X.font = '700 40px MS'; const t = 'Qaysi biri sizniki?', bw = X.measureText(t).width + 90;
+  X.fillStyle = C.ink; rrect(540 - bw / 2, 1316, bw, 84, 42); X.fill();
+  txt(t, 540, 1371, '700 40px MS', C.cream, 'center');
+  txt('Klassik · Yapon · Chorbog‘ · Minimalist va boshqalar', 540, 1462, '500 30px MS', C.text, 'center');
+}
+
+window.REEL = { DUR, render, ready, cover };
 if (new URLSearchParams(location.search).has('render')) { document.body.classList.add('render'); return; }
 let playing = true, t0 = performance.now(), cur = 0;
 const sc = document.getElementById('sc'), tm = document.getElementById('tm'), pp = document.getElementById('pp'); sc.max = DUR;
