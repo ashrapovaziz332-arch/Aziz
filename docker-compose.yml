@@ -1,0 +1,9 @@
+services:
+  studio:
+    build: .
+    env_file: .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+    restart: always   # server qayta yuklansa yoki xato bo'lsa — avtomatik qayta ishga tushadi (24/7)
