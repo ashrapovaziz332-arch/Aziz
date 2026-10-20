@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Landshaft uslublari — Reels</title>
+<style>
+@font-face{font-family:'PF';src:url(fonts/playfair-display-latin-400-normal.woff2) format('woff2');font-weight:400}
+@font-face{font-family:'PF';src:url(fonts/playfair-display-latin-700-normal.woff2) format('woff2');font-weight:700}
+@font-face{font-family:'MS';src:url(fonts/montserrat-latin-400-normal.woff2) format('woff2');font-weight:400}
+@font-face{font-family:'MS';src:url(fonts/montserrat-latin-500-normal.woff2) format('woff2');font-weight:500}
+@font-face{font-family:'MS';src:url(fonts/montserrat-latin-600-normal.woff2) format('woff2');font-weight:600}
+@font-face{font-family:'MS';src:url(fonts/montserrat-latin-700-normal.woff2) format('woff2');font-weight:700}
+@font-face{font-family:'MS';src:url(fonts/montserrat-latin-800-normal.woff2) format('woff2');font-weight:800}
+html,body{margin:0;background:#1b2a21;color:#f3ecdf;font-family:MS,sans-serif}
+#wrap{display:flex;flex-direction:column;align-items:center;gap:10px;padding:12px}
+canvas{display:block;height:calc(100vh - 90px);aspect-ratio:9/16;background:#F3ECDF;border-radius:10px}
+#ui{display:flex;gap:10px;align-items:center;width:min(640px,95vw)}
+#ui input{flex:1}
+#ui button{font:600 14px MS,sans-serif;padding:6px 14px;border-radius:6px;border:0;background:#B8913A;color:#fff;cursor:pointer}
+body.render{background:#F3ECDF}
+body.render #wrap{padding:0}
+body.render canvas{height:1920px;width:1080px;border-radius:0}
+body.render #ui{display:none}
+</style>
+</head>
+<body>
+<div id="wrap">
+  <canvas id="c" width="1080" height="1920"></canvas>
+  <div id="ui">
+    <button id="pp">Pauza</button>
+    <input id="sc" type="range" min="0" max="72" step="0.01" value="0">
+    <span id="tm">0.0s</span>
+  </div>
+</div>
+<script src="timing.js" onerror="void 0"></script>
+<script src="reel.js"></script>
+</body>
+</html>
