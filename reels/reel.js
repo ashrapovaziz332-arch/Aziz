@@ -2,7 +2,11 @@
 // Hammasi bitta deterministik render(t) funksiyasi: brauzerda ko'rish ham, kadrma-kadr MP4 eksport ham shundan.
 'use strict';
 (() => {
-const W = 1080, H = 1920, DUR = 72;
+const W = 1080, H = 1920;
+// Sahna uzunliklari (s): timing.js orqali diktor ovoziga moslab o'zgartiriladi
+const TM = window.REEL_TIMING || { hook: 4, scenes: Array(12).fill(5), finale: 8 };
+const STARTS = []; { let a = TM.hook; for (const d of TM.scenes) { STARTS.push(a); a += d; } }
+const FIN = STARTS[11] + TM.scenes[11], DUR = FIN + TM.finale;
 const C = {
   cream: '#F3ECDF', paper: '#F1E9DA', ink: '#1F3D2B', green: '#2F5D3A', gold: '#B8913A', goldL: '#D9B867',
   text: '#3A4A3E', lawn: '#8FB165', stone: '#E7DCC5', stone2: '#D3C3A3', water: '#6FB4C9', terra: '#C4693F',
@@ -908,28 +912,27 @@ function finale(T) {
 
 // ---------- asosiy kadr ----------
 const main = document.getElementById('c').getContext('2d');
-const sceneStart = i => 4 + 5 * i, TW = .35;
+const TW = .35;
+// sahna ichidagi animatsiyalar 5 soniyalik shkalada yozilgan — uzun sahnada mutanosib cho'ziladi
+const localT = (i, T) => (T - STARTS[i]) * 5 / TM.scenes[i], hookT = T => T * 4 / TM.hook;
 function drawStyle(i, lt, T) { renderScene(S[i], Math.max(0, lt), sceneCam(i, lt), 1 - clamp(ease(prog(lt, 2.25, .85)) * 1.5), T); callouts(S[i], lt); }
 function render(T) {
   X = main; X.setTransform(1, 0, 0, 1, 0, 0); X.globalAlpha = 1;
   T = clamp(T, 0, DUR - 1e-4);
-  if (T >= 64) { finale(T); return; }
-  // eng yaqin chegara (b) atrofida o'tish
-  const b = Math.round((T - 4) / 5) * 5 + 4, inTr = Math.abs(T - b) < TW && b >= 4 && b < 64;
-  const cur = T < 4 ? -1 : Math.min(11, Math.floor((T - 4) / 5));
-  const drawIdx = j => j < 0 ? hookScene(T) : drawStyle(j, T - sceneStart(j), T);
-  if (inTr) { const ni = (b - 4) / 5; transition(S[ni].trans, (T - b + TW) / (2 * TW), () => drawIdx(ni - 1), () => drawIdx(ni), T); }
+  if (T >= FIN) { finale(T - FIN + 64); return; }
+  const n = STARTS.findIndex(b => Math.abs(T - b) < TW), inTr = n >= 0;
+  let cur = -1; STARTS.forEach((b, i) => { if (T >= b) cur = i; });
+  const drawIdx = j => j < 0 ? hookScene(hookT(T)) : drawStyle(j, localT(j, T), T);
+  if (inTr) transition(S[n].trans, (T - STARTS[n] + TW) / (2 * TW), () => drawIdx(n - 1), () => drawIdx(n), T);
   else drawIdx(cur);
   topScrim(); logo(232);
-  if (T < 4 + TW) hookText(T, 1 - prog(T, 3.75, .3));
-  if (T > 4 - TW) {
-    const ni = Math.max(0, cur), oi = inTr && T < b ? ni : (inTr ? ni - 1 : -2);
-    progressBar(inTr ? (b - 4) / 5 : cur, prog(T, 3.9, .3) * (1 - prog(T, 63.7, .3)));
+  if (T < TM.hook + TW) hookText(hookT(T), 1 - prog(T, TM.hook - .25, .3));
+  if (T > TM.hook - TW) {
+    progressBar(inTr ? n : cur, prog(T, TM.hook - .1, .3) * (1 - prog(T, FIN - .3, .3)));
     if (inTr) {
-      const n = (b - 4) / 5; if (n - 1 >= 0) header(S[n - 1], n - 1, T - sceneStart(n - 1), 1 - prog(T, b - TW, TW));
-      header(S[n], n, T - b, 1);
-    } else if (cur >= 0) header(S[cur], cur, T - sceneStart(cur), 1 - prog(T, 63.65, .3));
-    void oi;
+      if (n >= 1) header(S[n - 1], n - 1, localT(n - 1, T), 1 - prog(T, STARTS[n] - TW, TW));
+      header(S[n], n, localT(n, T), 1);
+    } else if (cur >= 0) header(S[cur], cur, localT(cur, T), 1 - prog(T, FIN - .35, .3));
   }
 }
 
@@ -939,7 +942,7 @@ const ready = fontsReady.then(() => { prerender(); render(0); });
 window.REEL = { DUR, render, ready };
 if (new URLSearchParams(location.search).has('render')) { document.body.classList.add('render'); return; }
 let playing = true, t0 = performance.now(), cur = 0;
-const sc = document.getElementById('sc'), tm = document.getElementById('tm'), pp = document.getElementById('pp');
+const sc = document.getElementById('sc'), tm = document.getElementById('tm'), pp = document.getElementById('pp'); sc.max = DUR;
 pp.onclick = () => { playing = !playing; pp.textContent = playing ? 'Pauza' : 'Ijro'; t0 = performance.now() - cur * 1000; };
 sc.oninput = () => { cur = +sc.value; t0 = performance.now() - cur * 1000; render(cur); tm.textContent = cur.toFixed(1) + 's'; };
 ready.then(() => {

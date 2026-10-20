@@ -1,12 +1,17 @@
 // MP4 eksport: node tools/render.js [out.mp4] [fps] [workers]
-// Kadrlarni headless Chromium'da chizadi, ffmpeg bilan H.264 ga yig'adi (jim AAC trek bilan — Instagram uchun).
+// Davomiylik timing.js dan olinadi (bo'lmasa 72 s). Kadrlarni headless Chromium'da chizadi, ffmpeg bilan H.264 ga yig'adi (jim AAC trek bilan — Instagram uchun).
 const path = require('path'), fs = require('fs'), { spawn } = require('child_process');
 const { chromium } = require('playwright');
 const OUT = path.resolve(process.argv[2] || 'aziz-floran-12-uslub.mp4'), FPS = +(process.argv[3] || 30), N = +(process.argv[4] || 4);
-const DUR = 72, TOTAL = DUR * FPS, tmp = fs.mkdtempSync(path.join(require('os').tmpdir(), 'reel-'));
+const tmp = fs.mkdtempSync(path.join(require('os').tmpdir(), 'reel-'));
 const ff = (args, input) => new Promise((res, rej) => { const p = spawn('ffmpeg', ['-loglevel', 'error', '-y', ...args], { stdio: [input ? 'pipe' : 'ignore', 'inherit', 'inherit'] }); p.on('exit', c => c ? rej(new Error('ffmpeg ' + c)) : res()); if (input) input(p.stdin); });
 (async () => {
   const browser = await chromium.launch();
+  const probe = await browser.newPage();
+  await probe.goto('file://' + path.resolve(__dirname, '../index.html') + '?render=1');
+  const DUR = await probe.evaluate(() => window.REEL.DUR), TOTAL = Math.round(DUR * FPS);
+  await probe.close();
+  console.log(`Davomiylik: ${DUR.toFixed(2)} s, ${TOTAL} kadr`);
   const seg = Math.ceil(TOTAL / N); let done = 0;
   await Promise.all(Array.from({ length: N }, async (_, w) => {
     const page = await browser.newPage({ viewport: { width: 1080, height: 1920 } });
