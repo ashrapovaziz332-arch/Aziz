@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aziz Floran — Reklama</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #2f3524;
+    --olive: #434a32;
+    --cream: #f3e6d2;
+    --T: 10s; /* bitta sikl davomiyligi */
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; background: #1b1b17; overflow: hidden; }
+  body { display: grid; place-items: center; }
+
+  /* Sahna asl rasm o'lchamida (1086x1448), ekranga moslab kichraytiriladi */
+  .stage {
+    position: relative; width: 1086px; height: 1448px; overflow: hidden;
+    background: var(--cream);
+    transform-origin: center; transform: scale(var(--fit, 1));
+  }
+  .layer { position: absolute; }
+
+  /* ---------- 1. FON ---------- */
+  .bg {
+    inset: 0; background: url(assets/background.jpg) center / cover;
+    animation: bgZoom var(--T) ease-in-out infinite alternate;
+  }
+  @keyframes bgZoom { from { transform: scale(1.06) translateX(-8px); } to { transform: scale(1) translateX(0); } }
+
+  /* Devordagi quyosh nuri — sekin suzib yuradi */
+  .sun {
+    inset: -20%;
+    background:
+      radial-gradient(40% 30% at 70% 20%, rgba(255,244,220,.55), transparent 70%),
+      linear-gradient(115deg, transparent 35%, rgba(255,250,235,.28) 45%, transparent 55%);
+    mix-blend-mode: soft-light;
+    animation: sunDrift calc(var(--T) * 1.2) ease-in-out infinite alternate;
+  }
+  @keyframes sunDrift { from { transform: translate(-6%, -3%) rotate(-2deg); } to { transform: translate(6%, 3%) rotate(2deg); } }
+
+  /* ---------- 2. DARAXT (alohida qatlam) ---------- */
+  .tree-wrap {
+    left: 262px; top: 23px; width: 266px; height: 1356px;
+    transform-origin: 50% 100%;
+    animation: treeIn 2.2s cubic-bezier(.2,.8,.2,1) .2s both;
+  }
+  .tree {
+    width: 100%; height: 100%;
+    background: url(assets/tree.png) bottom / 100% 100% no-repeat;
+    transform-origin: 50% 100%;
+    animation: sway 4.6s ease-in-out 2.4s infinite;
+    filter: drop-shadow(18px 10px 24px rgba(80,60,30,.18));
+  }
+  @keyframes treeIn {
+    0%   { clip-path: inset(100% -20% 0 -20%); transform: scaleY(.82) translateY(40px); filter: blur(6px) brightness(1.1); }
+    60%  { filter: blur(0) brightness(1); }
+    100% { clip-path: inset(-5% -20% 0 -20%); transform: none; filter: none; }
+  }
+  @keyframes sway {
+    0%, 100% { transform: rotate(0) skewX(0); }
+    30%      { transform: rotate(.7deg) skewX(-.5deg); }
+    70%      { transform: rotate(-.5deg) skewX(.4deg); }
+  }
+
+  /* ---------- 3. YOZUVLAR (alohida qatlam) ---------- */
+  .copy {
+    left: 580px; top: 0; width: 480px; height: 100%;
+    display: flex; flex-direction: column; align-items: center;
+    color: var(--ink);
+  }
+  .logo { margin-top: 246px; width: 88px; height: 75px; }
+  .logo path {
+    fill: none; stroke: var(--olive); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round;
+    stroke-dasharray: 200; stroke-dashoffset: 200;
+    animation: draw 1.4s ease-out forwards;
+  }
+  .logo path:nth-child(1) { animation-delay: 1.0s; }
+  .logo path:nth-child(2) { animation-delay: 1.25s; }
+  .logo path:nth-child(3) { animation-delay: 1.5s; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+
+  .brand {
+    margin-top: 14px; font: 400 36px/1 "Jost", sans-serif; letter-spacing: .28em; padding-left: .28em;
+    animation: brandIn 1.4s cubic-bezier(.2,.8,.2,1) 1.6s both;
+  }
+  @keyframes brandIn { from { opacity: 0; letter-spacing: .8em; filter: blur(4px); } to { opacity: 1; letter-spacing: .28em; filter: blur(0); } }
+
+  .rule { height: 1.5px; width: 110px; background: var(--olive); opacity: .7; transform: scaleX(0); animation: rule .9s ease-out both; }
+  .rule.r1 { margin-top: 63px; animation-delay: 2.2s; }
+  .rule.r2 { margin-top: 52px; animation-delay: 4.4s; }
+  @keyframes rule { to { transform: scaleX(1); } }
+
+  .headline { margin-top: 62px; align-self: flex-start; padding-left: 37px; }
+  .line { display: block; overflow: hidden; padding-bottom: 6px; margin-bottom: -6px; }
+  .line span {
+    display: inline-block; font: 400 92px/1.28 "Playfair Display", serif; letter-spacing: -.03em;
+    transform: translateY(110%) rotate(4deg); transform-origin: left bottom;
+    animation: wordUp 1s cubic-bezier(.16,1,.3,1) both;
+  }
+  .line:nth-child(1) span { animation-delay: 2.6s; }
+  .line:nth-child(2) span { animation-delay: 3.1s; }
+  .line:nth-child(3) span { animation-delay: 3.6s; }
+  @keyframes wordUp { to { transform: none; } }
+
+  .cta {
+    margin-top: 57px; display: flex; align-items: center; gap: 0;
+    height: 86px; padding: 0 46px 0 44px; border-radius: 43px;
+    background: var(--olive); color: #f5efe2;
+    font: 400 23px/1 "Jost", sans-serif; letter-spacing: .01em;
+    box-shadow: 0 14px 30px rgba(40,45,25,.25);
+    position: relative; overflow: hidden;
+    animation: ctaIn .9s cubic-bezier(.34,1.56,.64,1) 5s both, pulse 2.4s ease-in-out 6.2s infinite;
+  }
+  .cta svg { width: 34px; height: 34px; animation: fly 2.4s ease-in-out 6.2s infinite; }
+  .cta .sep { width: 1.5px; height: 38px; background: rgba(245,239,226,.55); margin: 0 26px 0 24px; }
+  .cta::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(100deg, transparent 30%, rgba(255,255,255,.35) 50%, transparent 70%);
+    transform: translateX(-120%);
+    animation: shine 2.4s ease-in-out 6s infinite;
+  }
+  @keyframes ctaIn { from { opacity: 0; transform: translateY(30px) scale(.8); } to { opacity: 1; transform: none; } }
+  @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
+  @keyframes shine { 0% { transform: translateX(-120%); } 45%, 100% { transform: translateX(120%); } }
+  @keyframes fly { 0%, 60%, 100% { transform: none; } 30% { transform: translate(5px, -5px) rotate(-8deg); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 1ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; }
+  }
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div class="layer bg"></div>
+  <div class="layer sun"></div>
+
+  <div class="layer tree-wrap"><div class="tree"></div></div>
+
+  <div class="layer copy">
+    <svg class="logo" viewBox="0 0 82 70" aria-hidden="true">
+      <path d="M41 4 C30 18 30 38 41 52 C52 38 52 18 41 4 Z"/>
+      <path d="M38 52 C24 52 9 44 4 30 C18 28 32 36 38 52 Z"/>
+      <path d="M44 52 C58 52 73 44 78 30 C64 28 50 36 44 52 Z"/>
+    </svg>
+    <div class="brand">AZIZ FLORAN</div>
+    <div class="rule r1"></div>
+    <h1 class="headline">
+      <span class="line"><span>Sodda.</span></span>
+      <span class="line"><span>Nafis.</span></span>
+      <span class="line"><span>Zamonaviy.</span></span>
+    </h1>
+    <div class="rule r2"></div>
+    <div class="cta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 3 3 10.5l7.5 3L13.5 21 21 3Z"/><path d="m10.5 13.5 4-4"/>
+      </svg>
+      <span class="sep"></span>
+      Buyurtma uchun DM
+    </div>
+  </div>
+</div>
+<script>
+  // Sahnani ekranga moslash
+  const stage = document.getElementById('stage');
+  const fit = () => stage.style.setProperty('--fit', Math.min(innerWidth / 1086, innerHeight / 1448));
+  addEventListener('resize', fit); fit();
+  // Bosilganda animatsiyani qaytadan boshlash
+  stage.addEventListener('click', () => document.getAnimations().forEach(a => { a.currentTime = 0; a.play(); }));
+</script>
+</body>
+</html>
