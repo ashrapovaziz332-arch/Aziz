@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <title>Floran 3D — bog' va landshaft loyihalash</title>
+  <meta name="description" content="Relyef, o'simliklar, inshootlar va yer osti tarmoqlari — bitta 3D modelda." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231f5a3a'/%3E%3Cpath d='M6 13c4-3 8-3 10 0s6 3 10 0M6 18c4-3 8-3 10 0s6 3 10 0M6 23c4-3 8-3 10 0s6 3 10 0' stroke='%23d9f08a' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="importmap">
+    { "imports": { "three": "./vendor/three/three.module.js", "three/addons/": "./vendor/three/addons/" } }
+  </script>
+</head>
+<body>
+  <div id="app">
+    <canvas id="view"></canvas>
+
+    <header class="topbar panel">
+      <div class="brand" title="Floran 3D">
+        <svg viewBox="0 0 32 32" class="logo"><path d="M5 12c4-3 8-3 11 0s7 3 11 0M5 17c4-3 8-3 11 0s7 3 11 0M5 22c4-3 8-3 11 0s7 3 11 0" /></svg>
+      </div>
+      <div class="pinfo">
+        <div class="pname" id="projName">Bog'</div>
+        <div class="psub" id="projSub">2 400 m²</div>
+      </div>
+      <div class="seg" id="modeSeg">
+        <button data-mode="base" title="Mavjud holat (syomka)">Mavjud</button>
+        <button data-mode="project" class="on" title="Loyiha">Loyiha</button>
+      </div>
+      <button class="ibtn" id="btnUndo" title="Bekor qilish (Ctrl+Z)"></button>
+      <button class="ibtn" id="btnExport" title="Eksport"></button>
+      <button class="ibtn primary" id="btnSave" title="Loyihani faylga saqlash"></button>
+    </header>
+
+    <aside class="rail panel" id="rail"></aside>
+
+    <section class="sheet panel" id="sheet">
+      <div class="grab" id="grab"></div>
+      <nav class="tabs" id="tabs"></nav>
+      <div class="tabbody" id="tabbody"></div>
+      <div class="status" id="status"></div>
+      <div class="palette" id="palette"></div>
+      <nav class="cats" id="cats"></nav>
+    </section>
+
+    <div class="caption panel" id="caption" hidden></div>
+    <div class="coords" id="coords"></div>
+    <div class="walkhud" id="walkhud" hidden>
+      <span class="pill">Sayr · ko'z balandligi 1,7 m · WASD / strelkalar · sichqoncha bilan qarash · <b>Esc</b> — chiqish</span>
+      <div class="walkpad">
+        <button data-k="fw">▲</button><button data-k="lt">◀</button><button data-k="bw">▼</button><button data-k="rt">▶</button><button data-k="exit">✕</button>
+      </div>
+    </div>
+    <div id="menu" class="menu panel" hidden></div>
+    <div id="modal" class="modal" hidden><div class="mbox panel"><div class="mhead"><h3 id="mtitle"></h3><button class="ibtn" id="mclose">✕</button></div><div class="mbody" id="mbody"></div><div class="mfoot" id="mfoot"></div></div></div>
+    <div id="toast" class="toast" hidden></div>
+    <input type="file" id="fileOpen" accept=".json,application/json" hidden />
+    <noscript>Floran 3D ishlashi uchun JavaScript kerak.</noscript>
+  </div>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
